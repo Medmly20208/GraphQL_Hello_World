@@ -39,6 +39,23 @@ const resolvers = {
         client(parent){
             return db.Clients.filter((Client)=>parent.id==Client.id)
         }
+    },
+
+    Mutation:{
+        deleteProject(_,args){
+           db.Projects = db.Projects.filter((Project)=>Project.id!=args.id)
+           return db.Projects
+        },
+        addProject(_,args){
+            let projects=[
+                ...db.Projects,
+                {...args.project}
+             
+              ]
+            db.Projects = projects
+            return db.Projects
+        },
+      
     }
 }
 

@@ -32,4 +32,18 @@ export const typeDefs = `#graphql
     Manager(id:ID):Managers
    }
 
+   input addProjectInput{
+      id:ID!
+    title:String!
+    description: String!
+    budget:Float!
+    collaborators: [String!]
+    
+    
+   }
+   type Mutation{
+      deleteProject(id:ID!):[Projects!]
+      addProject(project:addProjectInput!):[Projects!]
+     
+   }
 `
